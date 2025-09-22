@@ -1,0 +1,7 @@
+{
+  "name": "Sympa dev",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "sympa",               // change to your main service name
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+  "forwardPorts": [8080, 8081, 8025]
+}
