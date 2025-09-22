@@ -1,6 +1,6 @@
 # Architecture des alias de listes
 
-Ce document décrit les changements architecturaux proposés pour intégrer la fonctionnalité d'alias dans Sympa.
+Ce document décrit les changements architecturaux proposés pour intégrer la fonctionnalité d'**alias** dans Sympa.
 
 ## 1. Modélisation de la base de données
 
