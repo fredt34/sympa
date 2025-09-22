@@ -6,7 +6,7 @@ Ce document décrit les changements architecturaux proposés pour intégrer la f
 
 Une nouvelle table nommée `list_alias` sera ajoutée pour gérer les alias. Cette approche a été choisie pour maintenir la normalisation de la base de données et permettre à une liste d'avoir plusieurs alias de manière flexible.
 
-La table aura la structure suivante :
+La table aura la structure suivante:
 
 -   `list_id` (INTEGER) : Identifiant de la liste parente, clé étrangère vers la table `list_table`.
 -   `alias_name` (VARCHAR) : Le nom de l'alias (ex: `ancien-nom@domaine.fr`).
