@@ -16,6 +16,7 @@ Ce document liste les tâches à accomplir pour implémenter la fonctionnalité 
     -   Tester le script sur une base de données de développement.
 - [ ]  **Implémentation des nouvelles commandes dans `sympa.pl` :**
     -   [ ]  Ajouter le support des options `--add_alias`, `--add_alias_first`, et `--remove_alias`.
+    -   [ ]  Ajouter une option `--dry-run` à chaque commande pour afficher les actions sans effectuer de modifications (base de données ou système). Permet de tester et de valider les commandes en toute sécurité.
     -   [ ]  Écrire les fonctions Perl pour chaque commande.
     -   [ ]  S'assurer que les fonctions gèrent correctement la base de données et les alias système.
     -   [ ]  Gérer les cas d'erreur (liste non trouvée, alias déjà existant, etc.).

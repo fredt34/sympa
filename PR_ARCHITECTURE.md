@@ -24,5 +24,6 @@ Les nouvelles commandes `add-alias` et `add-alias-first` devront interagir avec 
 Les nouvelles commandes seront ajoutées à l'utilitaire en ligne de commande `sympa.pl`.
 
 -   Le parsing des arguments de la ligne de commande sera mis à jour pour reconnaître `--add_alias`, `--add_alias_first` et `--remove_alias`.
+-   Chaque commande pourra recevoir l'option --dry-run, qui affichera les actions prévues sans effectuer de modifications réelles.
 -   Des fonctions dédiées seront créées pour chaque commande.
 -   La commande existante `rename_list` sera modifiée pour appeler la fonction `add_alias_first` en interne, garantissant ainsi que l'ancien nom est conservé comme un alias.
