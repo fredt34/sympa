@@ -1,0 +1,44 @@
+services:
+  db:
+    image: mariadb:11
+    environment:
+      MARIADB_ROOT_PASSWORD: rootpw
+      MARIADB_DATABASE: sympa
+      MARIADB_USER: sympa
+      MARIADB_PASSWORD: sympapw
+    volumes:
+      - dbdata:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-psympapw"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+  mailhog:
+    image: mailhog/mailhog:latest
+    ports:
+      - "8025:8025"   # Web UI to inspect captured emails
+    # SMTP listening on 1025 inside the container
+
+  sympa:
+    build: .
+    depends_on:
+      db:
+        condition: service_healthy
+      mailhog:
+        condition: service_started
+    environment:
+      # Point Sympa to DB and Mailhog (adjust to your Sympa config style)
+      SYMPA_DATABASE_DSN: "DBI:mysql:database=sympa;host=db;port=3306"
+      SYMPA_DATABASE_USER: "sympa"
+      SYMPA_DATABASE_PASSWORD: "sympapw"
+      SYMPA_SMTP_HOST: "mailhog"
+      SYMPA_SMTP_PORT: "1025"
+    ports:
+      - "8080:8080"   # wwsympa (Apache vhost from Dockerfile)
+      # Expose SOAP if your config enables it, e.g. 8081
+      # - "8081:8081"
+    volumes:
+      - sympa_spool:/var/spool/sympa
+      - sympa_etc:/etc/sympa
+      - sympa_logs:/var/log/sympa
